@@ -21,6 +21,7 @@ class SplashActivity : BaseActivities() {
         setContentView(binding.root)
     }
 
+
     override fun onResume() {
         super.onResume()
         delayedSplash()

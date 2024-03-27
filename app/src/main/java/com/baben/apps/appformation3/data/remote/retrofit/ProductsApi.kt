@@ -5,6 +5,7 @@ interface ProductsApi {
     //TODO :: Add Products services here
 
     // get all categories
+
     // get all products
     // get products by category
 }
