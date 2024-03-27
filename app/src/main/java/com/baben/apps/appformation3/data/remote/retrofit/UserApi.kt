@@ -5,15 +5,15 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface UserApi {
+/*interface UserApi {
 
     //TODO :: add Login and SingUp services here
 
     // login
     // singUp
-    interface UserApi {
+ } */  interface UserApi {
         @POST("auth/login")
-         fun login(@Body login: Login): Response<LoginResponseDto>
+       fun login(@Body login: Login): Response<LoginResponseDto>
     }
 
-}
+

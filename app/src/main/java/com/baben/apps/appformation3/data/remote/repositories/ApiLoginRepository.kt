@@ -12,6 +12,7 @@ import com.baben.apps.appformation3.domain.repositories.LoginRepository
     }
 
 }*/
+/*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -35,6 +36,22 @@ class ApiLoginRepository : LoginRepository {
             return LoginRepository.LoginResult.SUCCESS
         } else {
             return LoginRepository.LoginResult.AUTH_ERROR
+        }
+    }
+}*/
+
+class ApiLoginRepository(private val loginApi: UserApi) : LoginRepository {
+    override fun login(model: Login?): LoginRepository.LoginResult? {
+        // Effectuer l'appel API de login en utilisant Retrofit
+        return try {
+            val response = loginApi.login(model!!)
+            if (response.isSuccessful) {
+                LoginRepository.LoginResult.SUCCESS
+            } else {
+                LoginRepository.LoginResult.AUTH_ERROR
+            }
+        } catch (e: Exception) {
+            LoginRepository.LoginResult.GENERAL_ERROR
         }
     }
 }
