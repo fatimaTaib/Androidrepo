@@ -21,7 +21,7 @@ class SplashActivity : BaseActivities() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        displayNextScreen()
+
     }
 
     override fun onResume() {

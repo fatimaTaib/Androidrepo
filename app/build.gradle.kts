@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -45,6 +47,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.test:core-ktx:1.5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -61,4 +64,23 @@ dependencies {
 
     //https://github.com/google/gson
     implementation("com.google.code.gson:gson:2.10.1")
+    //Dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-android-compiler:2.51")
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.5.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    //mokito
+
+
+    // required if you want to use Mockito for unit tests
+    testImplementation ("org.mockito:mockito-core:2.24.5")
+    // required if you want to use Mockito for Android tests
+    androidTestImplementation ("org.mockito:mockito-android:2.24.5")
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
