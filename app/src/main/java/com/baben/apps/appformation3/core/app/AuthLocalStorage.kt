@@ -2,11 +2,13 @@ package com.baben.apps.appformation3.core.app
 
 import android.content.Context
 
+
 import android.content.SharedPreferences
 
+class AuthLocalStorage(context: Context) {
 
-
-class AuthLocalStorage(private val sharedPreferences: SharedPreferences) {
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("AuthPrefs", Context.MODE_PRIVATE)
 
     fun saveToken(token: String) {
         val editor = sharedPreferences.edit()
@@ -22,3 +24,4 @@ class AuthLocalStorage(private val sharedPreferences: SharedPreferences) {
         return sharedPreferences.contains("token")
     }
 }
+

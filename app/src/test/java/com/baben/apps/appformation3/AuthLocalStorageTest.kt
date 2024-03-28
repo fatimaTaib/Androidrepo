@@ -1,53 +1,58 @@
 package com.baben.apps.appformation3
 
-
-import android.content.SharedPreferences
 import com.baben.apps.appformation3.core.app.AuthLocalStorage
 import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
-
-
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import android.content.SharedPreferences
 import org.mockito.Mock
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import android.content.Context
+import org.junit.Before
+import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 class AuthLocalStorageTest {
 
-    @Mock
-    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var authLocalStorage: AuthLocalStorage
 
-    lateinit var authLocalStorage: AuthLocalStorage
     @Mock
-    lateinit var editor: SharedPreferences.Editor
+    private lateinit var sharedPreferences: SharedPreferences
+
+    @Mock
+    private lateinit var editor: SharedPreferences.Editor
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        authLocalStorage = AuthLocalStorage(sharedPreferences)
+        val context = mock(Context::class.java)
+        `when`(context.getSharedPreferences("AuthPrefs", Context.MODE_PRIVATE)).thenReturn(sharedPreferences)
         `when`(sharedPreferences.edit()).thenReturn(editor)
+
+        authLocalStorage = AuthLocalStorage(context)
     }
 
     @Test
     fun testSaveToken() {
-        val token = "test_token"
-        authLocalStorage.saveToken(token)
-        verify(editor).putString("token", token)
+        authLocalStorage.saveToken("test_token")
+        verify(editor).putString("token", "test_token")
         verify(editor).apply()
     }
 
-
     @Test
     fun testGetToken() {
-        val token = "test_token"
-        `when`(sharedPreferences.getString("token", null)).thenReturn(token)
-        assertEquals(token, authLocalStorage.getToken())
+        `when`(sharedPreferences.getString("token", null)).thenReturn("test_token")
+        assertEquals("test_token", authLocalStorage.getToken())
     }
 
     @Test
     fun testIsLoggedIn() {
         `when`(sharedPreferences.contains("token")).thenReturn(true)
-        assertEquals(true, authLocalStorage.isLoggedIn())
+        assertTrue(authLocalStorage.isLoggedIn())
+
+        `when`(sharedPreferences.contains("token")).thenReturn(false)
+        assertFalse(authLocalStorage.isLoggedIn())
     }
 }
