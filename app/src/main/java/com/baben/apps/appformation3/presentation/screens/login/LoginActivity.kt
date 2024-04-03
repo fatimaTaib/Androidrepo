@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.baben.apps.appformation3.core.app.AuthLocalStorage
 import com.baben.apps.appformation3.core.bases.BaseActivities
 import com.baben.apps.appformation3.data.remote.retrofit.ApiService
 import com.baben.apps.appformation3.databinding.ActivityLoginBinding
@@ -21,21 +22,23 @@ class LoginActivity : BaseActivities() {
 
     private lateinit var binding: ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupActions()
+        val authStorage = AuthLocalStorage(context)
         // Vérifiez si l'utilisateur est déjà connecté au démarrage de l'activité
-        if (isUserLoggedIn()) {
+        if (authStorage.isLogged()) {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }
-    private fun isUserLoggedIn(): Boolean {
+   /* private fun isUserLoggedIn(): Boolean {
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         return sharedPreferences.contains("token")
-    }
+    }*/
 
     private fun setupActions() {
         binding.uiLoginButton.setOnClickListener(::onLoginButtonClicked)

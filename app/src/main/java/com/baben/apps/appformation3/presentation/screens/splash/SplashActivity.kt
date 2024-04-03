@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.baben.apps.appformation3.core.app.AppConfig
+import com.baben.apps.appformation3.core.app.AuthLocalStorage
 import com.baben.apps.appformation3.core.bases.BaseActivities
 import com.baben.apps.appformation3.databinding.ActivitySplashBinding
 import com.baben.apps.appformation3.presentation.screens.home.HomeActivity
@@ -43,7 +44,8 @@ class SplashActivity : BaseActivities() {
         startActivity(Intent(context, LoginActivity::class.java))
     }*/
     private fun displayNextScreen() {
-        if (isUserLoggedIn()) {
+        val authStorage = AuthLocalStorage(context)
+        if (authStorage.isLogged()) {
             startActivity(Intent(context, HomeActivity::class.java))
         } else {
             startActivity(Intent(context, LoginActivity::class.java))
@@ -51,11 +53,11 @@ class SplashActivity : BaseActivities() {
         finish()
     }
 
-    private fun isUserLoggedIn(): Boolean {
+  /*  private fun isUserLoggedIn(): Boolean {
 
             val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             return sharedPreferences.contains("token")
-        }
+        }*/
 
 
 }
