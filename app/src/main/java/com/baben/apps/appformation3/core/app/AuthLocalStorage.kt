@@ -1,11 +1,9 @@
 package com.baben.apps.appformation3.core.app
 
-import android.content.Context
 
 
 import android.content.SharedPreferences
 
-class AuthLocalStorage(context: Context) {
 
     /*  private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("AuthPrefs", Context.MODE_PRIVATE)
@@ -24,31 +22,35 @@ class AuthLocalStorage(context: Context) {
         return sharedPreferences.contains("token")
     }*/
 
-      companion object {
-            const val TOKEN_KEY: String = "tokenKey"
-            const val SHARD_PREFERENCE_KEY: String = "sharedPreferencesFileKey"
-            const val DEFAULT_TOKEN_VALUE : String = ""
-        }
+import android.content.Context
 
-        private val sharedPreferences = context.getSharedPreferences(SHARD_PREFERENCE_KEY,Context.MODE_PRIVATE)
-        private val editor = sharedPreferences.edit()
+class AuthLocalStorage(val context: Context) {
+    companion object {
+        const val TOKEN_KEY: String = "tokenKey"
+        const val SHARD_PREFERENCE_KEY: String = "sharedPreferencesFileKey"
+        const val DEFAULT_TOKEN_VALUE : String = ""
+    }
 
-        fun saveToken(token: String) {
-            editor.putString(TOKEN_KEY,token).apply()
-        }
+    private val sharedPreferences = context.getSharedPreferences(SHARD_PREFERENCE_KEY,Context.MODE_PRIVATE)
+    private val editor = sharedPreferences.edit()
 
-        fun getToken(): String {
-            return sharedPreferences.getString(TOKEN_KEY,DEFAULT_TOKEN_VALUE) ?: DEFAULT_TOKEN_VALUE
-        }
+    fun saveToken(token: String) {
+        editor.putString(TOKEN_KEY,token).apply()
+    }
 
-        fun clearToken() {
-            editor.remove(TOKEN_KEY).apply()
-        }
+    fun getToken(): String {
+        return sharedPreferences.getString(TOKEN_KEY,DEFAULT_TOKEN_VALUE) ?: DEFAULT_TOKEN_VALUE
+    }
 
-        fun isLogged(): Boolean {
-            return getToken() != DEFAULT_TOKEN_VALUE
-        }
+    fun clearToken() {
+        editor.remove(TOKEN_KEY).apply()
+    }
 
+    fun isLogged(): Boolean {
+        return getToken() != DEFAULT_TOKEN_VALUE
+    }
+
+}
 
 
    /* val Sharedpreferencekey: Any? = null
@@ -58,5 +60,5 @@ class AuthLocalStorage(context: Context) {
         const val Defaulttokenvalue=DEFAULT_VALUE_NULL
     }
 */
-}
+
 

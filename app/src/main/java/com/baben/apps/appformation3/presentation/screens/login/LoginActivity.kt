@@ -28,7 +28,7 @@ class LoginActivity : BaseActivities() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupActions()
-        val authStorage = AuthLocalStorage(context)
+        val authStorage = AuthLocalStorage(this)
         // Vérifiez si l'utilisateur est déjà connecté au démarrage de l'activité
         if (authStorage.isLogged()) {
             startActivity(Intent(this, HomeActivity::class.java))

@@ -37,12 +37,6 @@ class SplashActivity : BaseActivities() {
         )
     }
 
-    /*private fun displayNextScreen() {
-        //TODO :: check if user already logged or not
-        //TODO :: if is already logged go to HomeActivity
-        //TODO :: if is not logged go to LoginActivity
-        startActivity(Intent(context, LoginActivity::class.java))
-    }*/
     private fun displayNextScreen() {
         val authStorage = AuthLocalStorage(context)
         if (authStorage.isLogged()) {

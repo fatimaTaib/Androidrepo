@@ -1,9 +1,8 @@
 package com.baben.apps.appformation3.presentation.screens.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.baben.apps.appformation3.R
+
 import com.baben.apps.appformation3.core.bases.BaseActivities
 import com.baben.apps.appformation3.databinding.ActivityHomeBinding
 
