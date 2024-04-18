@@ -1,5 +1,6 @@
 package com.baben.apps.appformation3.presentation.screens.login
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -54,9 +55,14 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     }
 
 
-    private fun saveTokenInLocalStorage(token: String) {
-
-    }
+   /* private fun saveTokenInLocalStorage(context: Context, token: String) {
+        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("token", token)
+        editor.apply()
+    }*/
+   private fun saveTokenInLocalStorage(token: String) {
+      }
 
     //une classe scellée (sealed class) en Kotlin qui représente les différents états possibles de l'opération de login
     sealed class LoginViewState {

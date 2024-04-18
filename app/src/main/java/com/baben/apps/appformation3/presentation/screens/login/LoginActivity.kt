@@ -46,7 +46,7 @@ class LoginActivity : BaseActivities() {
     }
 
     private fun onLoginButtonClicked(view: View?) {
-       // TODO("implement real login action")
+
         startActivity(Intent(context, HomeActivity::class.java))
         finish()
     }
@@ -71,6 +71,7 @@ class LoginActivity : BaseActivities() {
                     finish()
                 } else {
                     // Handle login error
+
                 }
             }
 

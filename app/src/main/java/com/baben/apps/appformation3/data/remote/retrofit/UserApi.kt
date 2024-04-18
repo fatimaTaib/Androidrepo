@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 /*interface UserApi {
 
-    //TODO :: add Login and SingUp services here
+
 
     // login
     // singUp

@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ProductsApi {
 
-    //TODO :: Add Products services here
+
 
     // get all categories
     // get all products

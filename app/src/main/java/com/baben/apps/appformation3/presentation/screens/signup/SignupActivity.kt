@@ -26,7 +26,7 @@ class SignupActivity : BaseActivities() {
     }
 
     private fun onSaveButtonClicked(view: View?) {
-        //TODO("Add save button real action")
+
         startActivity(Intent(context, LoginActivity::class.java))
         finish()
     }
