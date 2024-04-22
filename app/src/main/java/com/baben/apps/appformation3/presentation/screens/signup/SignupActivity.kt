@@ -11,9 +11,9 @@ import com.baben.apps.appformation3.presentation.screens.login.LoginActivity
 
 class SignupActivity : BaseActivities() {
 
-    private lateinit var binding: ActivitySignupBinding
+    lateinit var binding: ActivitySignupBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -25,13 +25,13 @@ class SignupActivity : BaseActivities() {
         binding.uiSaveButton.setOnClickListener(::onSaveButtonClicked)
     }
 
-    private fun onSaveButtonClicked(view: View?) {
+    fun onSaveButtonClicked(view: View?) {
 
         startActivity(Intent(context, LoginActivity::class.java))
         finish()
     }
 
-    private fun onBackButtonClicked(view: View?) {
+    fun onBackButtonClicked(view: View?) {
         finish()
     }
 }
